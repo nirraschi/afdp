@@ -12,7 +12,7 @@ const Hero = () => {
             <img
                 src={flor2}
                 alt="hero"
-                className="absolute left-0 bottom-10 h-[300px] object-contain z-20 opacity-100 "
+                className="absolute left-0 bottom-10 h-[250px] object-contain z-20 opacity-100 "
             />
             <img
                 src={flor3}
@@ -24,9 +24,13 @@ const Hero = () => {
 
                 {/* TEXTO */}
                 <div className="flex flex-col items-center gap-6 z-10  w-1/2 ml-10">
-                    <h1 className="text-5xl font-title text-olive-800">Tu belleza a Flor de Piel</h1>
-                    <p className="text-md font-body text-olive-700 text-center">Te asesoramos para que encuentres tu estilo, sientiendote cómoda con tu imagen, siempre con resultados naturales.</p>
-                    <button className="border border-olive-800 text-olive-800 font-title text-lg px-5 py-2 rounded-full w-50">Conoce más</button>
+                    <h1 className="text-6xl font-title text-olive-800 text-left">Tu belleza a Flor de Piel</h1>
+                    <p className="text-md font-body text-olive-700 text-left">Te asesoramos para que encuentres tu estilo, sientiendote cómoda con tu imagen, siempre con resultados naturales.</p>
+                    <button className="self-start border border-olive-800 text-olive-800
+                    font-title text-lg px-5 py-2 rounded-full w-50
+                    hover:bg-olive-800 hover:text-white transition-all duration-300 ease-in-out">
+                    Conoce más
+                    </button>
                 </div>
 
                 {/* IMAGEN */}
