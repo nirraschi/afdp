@@ -3,6 +3,7 @@ import logo from "../assets/logo-blanco.png"
 import flor4 from "../assets/flor-4.svg"
 import flor2 from "../assets/flor-2.svg"
 import flor3 from "../assets/flor-3.svg"
+import fondo from "../assets/fondo.png"
 
 const Hero = () => {
 
@@ -20,7 +21,7 @@ const Hero = () => {
                 className="absolute right-5 top-0 h-[300px] object-contain z-20 opacity-100 "
             />
 
-            <div className="relative bg-[#bec29d] w-full max-w-6xl h-[400px] rounded-3xl px-10 flex items-center">
+            <div className="relative bg-[url('src/assets/fondos.png')] w-full max-w-6xl h-[400px] rounded-3xl px-10 flex items-center bg-cover bg-no-repeat">
 
                 {/* TEXTO */}
                 <div className="flex flex-col items-center gap-6 z-10  w-1/2 ml-10">
@@ -37,13 +38,13 @@ const Hero = () => {
                 <img
                     src={chica}
                     alt="hero"
-                    className="absolute right-6 -top-24 h-[500px] object-contain z-10"
+                    className="absolute right-6 bottom-0 h-[500px] object-contain z-10"
                 />
-                <img
+                {/* <img
                     src={logo}
                     alt="hero"
                     className="absolute left-0 -top-40 h-[700px] object-contain z-5 opacity-10"
-                />
+                /> */}
 
 
 
