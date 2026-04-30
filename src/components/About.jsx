@@ -1,4 +1,4 @@
-
+import afdp from "../assets/afdp.jpg"
 const About = () => {
     const equipo = [
         {
@@ -36,7 +36,7 @@ const About = () => {
             description: 'Manos • Pies • Faciales • Corporales • Faciales • Corporales',
             image: "https://placehold.net/avatar.png"
         },
-            {
+        {
             id: 6,
             name: 'Marina Bustos Komaid',
             title: 'CEO',
@@ -46,12 +46,18 @@ const About = () => {
 
     return (
         <section id="about" className="w-full h-full text-center bg-[#FFF6E4] rounded-4xl">
-            <div className="flex  items-center justify-center gap-10">
-                <div className="flex flex-col items-start gap-4">
-                    <h2 className="font-title text-3xl">A Flor de Piel</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+            <div className="flex  items-center justify-center gap-10 p-10">
+                <div className="flex flex-col items-start gap-4 p-4">
+                    <h2 className="font-title text-4xl text-olive-600">Sobre nosotras</h2>
+                    <p className="font-body text-start text-md text-olive-600 mr-10">
+                        Un espacio dedicado al cuidado estético, donde cada detalle es pensado para lograr resultados naturales,
+                        armónicos y duraderos.
+                    </p>
                 </div>
-                <img src="https://placehold.net/1-800x600.png" alt="" className="w-1/2" />
+                <div className="relative">
+                    <img src={afdp} alt="" className="w-1/3 rounded-full " />
+
+                </div>
             </div>
             <div className='grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 justify-items-center md:mx-20 lg:mx-40 '>
 

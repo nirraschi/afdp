@@ -1,119 +1,176 @@
-
-import pestañas from '../assets/pestañas.jpg'
-import uñas from '../assets/uñas.jpg'
-import faciales from '../assets/faciales.jpg'
-import corporales from '../assets/corporales.jpg'
-import salon from '../assets/salon.jpg'
-import yoga from '../assets/yoga.jpg'
+import { useState } from "react";
+import pestañas from "../assets/pestañas.jpg";
+import uñas from "../assets/uñas.jpg";
+import faciales from "../assets/faciales.jpg";
+import corporales from "../assets/corporales.jpg";
+import salon from "../assets/salon.jpg";
+import yoga from "../assets/yoga.jpg";
+import Flor from "../assets/leaf.svg?react"
+import micro from "../assets/micro.jpg"
 
 const Services = () => {
+    // una sola card abierta
+    const [openId, setOpenId] = useState(null);
+
+    const toggleCard = (id) => {
+        setOpenId((prev) => (prev === id ? null : id));
+    };
+
     const servicios = [
         {
             id: 1,
-            title: 'Cejas & Pestañas',
-            description: '',
-            image: pestañas
+            title: "Micropigmentación",
+            description:
+                "Diseño preciso y armonioso para labios, ojos y cejas con acabado natural y elegante.",
+            tag: [
+                "Microblading",
+                "Nanoblading",
+                "Micropigmentación de labios",
+                "Retoque",
+                "Corrección de diseño",
+                "Delineado de ojos",
+            ],
+            image: micro,
         },
         {
             id: 2,
-            title: 'Manos & Pies',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-            image: uñas
+            title: "Manos & Pies",
+            description:
+                "Uñas impecables y cuidado completo para lucir siempre perfecta.",
+            tag: [
+                "Semipermanente",
+                "Capping",
+                "Esculpidas",
+                "Soft Gel",
+                "Nail Art",
+                "Belleza de pies",
+                "Pedicuría",
+            ],
+            image: uñas,
         },
         {
             id: 3,
-            title: 'Faciales',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-            image: faciales
+            title: "Cejas & Pestañas",
+            description:
+                "Diseño de mirada con técnicas modernas y resultados naturales.",
+            tag: [
+                "Pestañas pelo por pelo",
+                "Diseño de cejas",
+                "Laminado de cejas",
+                "Volumen ruso",
+                "Lifting de pestañas",
+            ],
+            image: pestañas,
         },
+
         {
             id: 4,
-            title: 'Corporales',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-            image: corporales
+            title: "Faciales",
+            description:
+                "Tratamientos para renovar, hidratar y devolver luminosidad a tu piel.",
+            tag: [
+                "Limpieza facial",
+                "Dermaplaning",
+                "Hidratación profunda",
+                "Radiofrecuencia",
+                "Antiage",
+                "Mascaras nutritivas",
+                "Punta de diamante",
+            ],
+            image: faciales,
         },
         {
             id: 5,
-            title: 'Salón',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-            image: salon
+            title: "Corporales",
+            description:
+                "Bienestar y estética corporal para sentirte mejor en tu piel.",
+            tag: [
+                "Drenaje linfático",
+                "Masajes relajantes",
+                "Reductores",
+                "Modeladores",
+                "Exfoliación corporal",
+                "Radiofrecuencia corporal",
+                "Celulitis",
+            ],
+            image: corporales,
         },
+
         {
             id: 6,
-            title: 'Salud',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
-            image: yoga
-        }]
-
-
-
-    const CornerFlower = () => (
-        <svg className="absolute top-0 right-0 w-12 h-12 opacity-20 pointer-events-none" viewBox="0 0 48 48" fill="none">
-            <ellipse cx="38" cy="10" rx="5" ry="9" transform="rotate(30 38 10)" fill="#F1B1B8" />
-            <ellipse cx="28" cy="5" rx="5" ry="9" transform="rotate(-20 28 5)" fill="#E9D4A8" />
-            <ellipse cx="45" cy="20" rx="5" ry="9" transform="rotate(80 45 20)" fill="#BEC29D" />
-            <circle cx="36" cy="12" r="3" fill="#d4a882" />
-        </svg>
-    );
-
+            title: "Salud & Bienestar",
+            description:
+                "Espacios para conectar con vos y cuidar cuerpo y mente.",
+            tag: ["Yoga", "Pilates", "Meditación"],
+            image: yoga,
+        },
+    ];
 
     return (
-        <section className="flex flex-col items-center justify-center min-h-screen w-full py-16 px-6 bg-white font-sans">
+        <section className="relative py-16 px-6 bg-white">
+            <Flor className=" w-155 h-155 text-olive-500 absolute -right-25 top-25  object-contain z-10 opacity-80  "
+            />
+            <Flor className=" scale-x-[-1] w-155 h-155 text-olive-500 absolute -left-25 top-155  object-contain z-10 opacity-80  "
+            />
 
-            <p className="text-xs tracking-widest uppercase text-[#b8967a] italic font-serif mb-1">
-                A flor de piel
-            </p>
-            <h2 className="text-4xl font-serif font-light text-[#3a3028] leading-tight">
-                Nuestros Servicios
-            </h2>
+            <div className="relative grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-5 max-w-4xl mx-auto z-20 ">
+                {servicios.map((s) => {
+                    const isOpen = openId === s.id;
 
+                    // si está abierta muestra todo, sino solo 3
+                    const visibleTags = isOpen ? s.tag : s.tag.slice(0, 3);
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl w-full">
-                {servicios.map((s) => (
-                    <div
-                        key={s.id}
-                        className="relative border border-[#e8d8c8] bg-white overflow-hidden group transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(185,145,110,0.13)]"
-                        style={{ borderRadius: '2px' }}
-                    >
-
-                        <div className="relative h-40 bg-[#f7f0e8] overflow-hidden">
+                    return (
+                        <div
+                            key={s.id}
+                            className="border border-[#e8d8c8] bg-white overflow-hidden rounded-lg flex flex-col  text-start "
+                        >
                             <img
                                 src={s.image}
                                 alt={s.title}
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                style={{ filter: 'saturate(0.85)' }}
+                                className="w-full h-40 object-cover"
                             />
+
+                            <div className="p-4 flex flex-col gap-2">
+                                <h3 className="text-lg text-[#3a3028]">{s.title}</h3>
+
+                                <p className="text-xs text-[#a0907e] mb-3">
+                                    {s.description}
+                                </p>
+                                <div
+                                    className={`flex w-full overflow-hidden items-center transition-all duration-700 ease-in-out ${isOpen ? "max-h-40 opacity-100 mt-0" : "max-h-16 opacity-80"
+                                        }`}
+                                >
+                                    <div className="flex flex-wrap gap-2 mb-4 ">
+                                        {visibleTags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className="text-[10px] uppercase bg-[#f7f0e8] px-2 py-1 rounded-full"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                </div>
+
+                                {s.tag.length > 3 && (
+                                    <button
+                                        onClick={() => toggleCard(s.id)}
+                                        className="text-xs uppercase text-[#b8967a]"
+                                    >
+                                        {isOpen
+                                            ? "Ver menos"
+                                            : `Ver más +${s.tag.length - 3}`}
+                                    </button>
+                                )}
+                            </div>
                         </div>
+                    );
+                })}
+            </div>
+        </section>
+    );
+};
 
-
-                        <div className="relative p-4 pb-5">
-                            <CornerFlower />
-                            <p className="text-[10px] tracking-widest uppercase text-[#b8967a] mb-1">
-                                {s.tag}
-                            </p>
-
-                            <a href={`/servicios/${s.id}`}
-                                className="block font-serif text-lg font-normal text-[#3a3028] hover:text-[#b8967a] transition-colors duration-200 mb-2"
-                            >
-
-                                {s.title}
-                            </a>
-                            <p className="text-xs text-[#a0907e] leading-relaxed font-light mb-3">
-                                {s.description}
-                            </p>
-
-                        </div>
-                    </div>
-                ))}
-
-            </div >
-
-
-        </section >
-
-
-
-
-    )
-}     
-export default Services
+export default Services;
