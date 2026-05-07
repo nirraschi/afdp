@@ -1,58 +1,98 @@
 import chica from "../assets/chica.png"
-import logo from "../assets/logo-blanco.png"
-import Flor2 from "../assets/flower2.svg?react"
-import Flor3 from "../assets/flower3.svg?react"
 
 const Hero = () => {
-
     return (
-        <section className="w-full flex flex-col justify-center mt-2 h-screen  rounded-t-2xl bg-white 
-            ">
+        <section id="hero" className="flex h-screen w-full flex-col rounded-t-2xl bg-white">
 
-            {/* <Flor2 className="w-125 h-125 text-olive-500 absolute -right-10 top-20  object-contain z-20 opacity-100  "
-            />
-            <Flor2 className=" rotate-180 w-125 h-125 text-olive-500 absolute -left-10 top-48  object-contain z-20 opacity-100  "
-            /> */}
+            {/* ── TOP HALF ── */}
+            <div className="flex  items-center justify-between px-10 pb-8 py-20 lg:px-20">
 
-            <div className=" flex flex-col items-center justify-center  z-10   h-1/2 w-2/3 text-center  ">
-
-                <h1 className="text-3xl font-title text-olive-700 font-semibold">Realzá tu belleza natural en</h1>
-
-                <div className="flex text-start gap-6 items-center">
-                    <h2 className="text-[75px] font-accent text-olive-500 " >A Flor de Piel</h2>
-                    <p className="font-body w-40 text-olive-500 leading-tight font-semibold">Almacén de Estética y Salud</p>
-
+                {/* Left: título principal */}
+                <div className="flex flex-col gap-4">
+                    <h3 className="text-[11px] font-semibold uppercase tracking-widest text-[#86a884]">
+                        Centro de estética · Tucumán
+                    </h3>
+                    <p className="text-xl text-olive-500 font-body">
+                        Encontrá tu estilo y realzá tu belleza en
+                    </p>
+                    <h1 className="font-accent text-6xl italic text-olive-700 leading-none tracking-tight lg:text-7xl">
+                        A Flor de Piel
+                    </h1>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-[#86a884]">
+                        Almacén de Estética y Salud
+                    </p>
                 </div>
 
-
+                {/* Right: bajada sutil */}
+                <h4 className="hidden max-w-[200px] text-right text-xs leading-relaxed text-olive-400 lg:block self-start">
+                    Especialistas en cejas, pestañas,<br />uñas y micropigmentación.
+                </h4>
             </div>
 
-            <div className="relative bg-olive-500 flex items-start rounded-t-2xl
-            w-full h-1/2 mb-20 ">
 
-                {/* TEXTO */}
-                <div className="flex flex-col gap-10 z-10 w-2/3 h-full items-center justify-center">
-                    <h1 className="text-md font-body text-white font-light text-center text-balance w-1/2">Centro de estética en Tucumán especializado en cejas, pestañas, uñas y micropigmentación.</h1>
-                    <div className="flex items-center justify-center w-48 px-4 py-2 text-olive-600 bg-white font-body text-lg rounded-full
-                    hover:bg-olive-800 hover:text-white 
-                    transition-all duration-500 ease-in-out hover:cursor-pointer z-10 ">
-                        <button className="hover:cursor-pointer">
-                            Reserva tu turno
-                        </button>
 
+            {/* ── BOTTOM HALF ── */}
+
+
+            <div className="relative flex items-center overflow-hidden rounded-2xl bg-olive-800 px-10 py-10 lg:px-16 ">
+
+                {/* Contenido izquierdo */}
+                <div className="z-10 flex max-w-sm flex-col gap-5">
+                    <h2 className="text-sm leading-relaxed text-olive-400">
+                        Centro de estética en Tucumán especializado en cejas,<br />
+                        pestañas, uñas y micropigmentación.
+                    </h2>
+
+                    {/* CTAs */}
+                    <div className="flex items-center gap-4">
+                        <a
+                            href="#reserva"
+                            className="flex items-center gap-2 rounded-full bg-[#f9f7f5] px-5 py-2.5 text-xs font-bold tracking-wide text-olive-900 transition-all duration-200 hover:bg-white"
+                        >
+                            Reservá tu turno
+                            <span className="text-sm leading-none">→</span>
+                        </a>
+                        <a
+                            href="#services"
+                            className="text-xs tracking-wide text-olive-500 transition-colors hover:text-olive-300"
+                        >
+                            Ver servicios
+                        </a>
+                    </div>
+
+                    {/* Tags de servicios */}
+                    <div className="flex flex-wrap gap-1.5">
+                        {["Micropigmentación", "Faciales", "Uñas", "Cejas & Pestañas"].map((tag, i) => (
+                            <span
+                                key={tag}
+                                className={`rounded-full px-3 py-1 text-[10px] font-medium ${i % 2 === 0
+                                    ? "bg-olive-700 text-[#86a884]"
+                                    : "bg-olive-700 text-[#c4917f]"
+                                    }`}
+                            >
+                                {tag}
+                            </span>
+                        ))}
                     </div>
                 </div>
 
-                <img
-                    src={chica}
-                    alt="hero"
-                    className="absolute right-20 bottom-0 h-[530px] object-contain z-10"
-                />
-
-
+                {/* Imagen de la chica — anclada al fondo derecho */}
+                <div className="hidden md:block pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-olive-950/60 to-transparent" />
 
 
             </div>
+            <div className="relative hidden md:block">
+                <img
+                    src={chica}
+                    alt="A Flor de Piel"
+                    className="absolute bottom-0 right-10 z-10 h-[90%] h-[450px] object-contain  "
+                />
+            </div>
+
+
+
+
+            {/* Degradado decorativo detrás de la imagen */}
 
         </section>
     )
