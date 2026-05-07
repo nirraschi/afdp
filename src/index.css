@@ -1,11 +1,18 @@
 @import "tailwindcss";
 
 /* fuentes */
+@font-face {
+  font-family: "brown cheese";
+  src: url("/fonts/Brown-Cheese.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* variables de fuente */
 @theme {
-  --font-title: "Playfair Display", serif;
-  --font-accent: "Tangerine", cursive;
-  --font-body: "Inter", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-accent: "brown cheese", cursive;
+  --font-title: "Poppins", sans-serif;
 }
 

@@ -3,7 +3,7 @@ import pestañas from "../assets/pestañas.jpg";
 import uñas from "../assets/uñas.jpg";
 import faciales from "../assets/faciales.jpg";
 import corporales from "../assets/corporales.jpg";
-import salon from "../assets/salon.jpg";
+import Divider from "../assets/divider.svg?react"
 import yoga from "../assets/yoga.jpg";
 import Flor from "../assets/leaf.svg?react"
 import micro from "../assets/micro.jpg"
@@ -34,7 +34,7 @@ const Services = () => {
         },
         {
             id: 2,
-            title: "Manos & Pies",
+            title: "Manos y Pies",
             description:
                 "Uñas impecables y cuidado completo para lucir siempre perfecta.",
             tag: [
@@ -50,7 +50,7 @@ const Services = () => {
         },
         {
             id: 3,
-            title: "Cejas & Pestañas",
+            title: "Cejas y Pestañas",
             description:
                 "Diseño de mirada con técnicas modernas y resultados naturales.",
             tag: [
@@ -78,97 +78,66 @@ const Services = () => {
                 "Punta de diamante",
             ],
             image: faciales,
-        },
-        {
-            id: 5,
-            title: "Corporales",
-            description:
-                "Bienestar y estética corporal para sentirte mejor en tu piel.",
-            tag: [
-                "Drenaje linfático",
-                "Masajes relajantes",
-                "Reductores",
-                "Modeladores",
-                "Exfoliación corporal",
-                "Radiofrecuencia corporal",
-                "Celulitis",
-            ],
-            image: corporales,
-        },
-
-        {
-            id: 6,
-            title: "Salud & Bienestar",
-            description:
-                "Espacios para conectar con vos y cuidar cuerpo y mente.",
-            tag: ["Yoga", "Pilates", "Meditación"],
-            image: yoga,
-        },
+        }
     ];
 
     return (
-        <section className="relative py-16 px-6 bg-white">
-            <Flor className=" w-155 h-155 text-olive-500 absolute -right-25 top-25  object-contain z-10 opacity-80  "
-            />
-            <Flor className=" scale-x-[-1] w-155 h-155 text-olive-500 absolute -left-25 top-155  object-contain z-10 opacity-80  "
-            />
+        <section className="relative flex px-6 bg-white w-full h-full">
+            <div className="w-1/2">
+                <div className="w-full flex items-start flex-col p-10 gap-6">
+                    <h4 className="font-title text-olive-600 text-3xl">Nuestros Servicios</h4>
+                    <p className="font-body text-olive-600">Diseño de piel, manos y cejas, faciales y corporales.</p>
+                    
+                    <div className="flex items-center justify-center w-30 px-3 py-2 text-white bg-olive-500 font-body text-lg rounded-full
+                    hover:bg-olive-800 hover:text-white 
+                    transition-all duration-500 ease-in-out hover:cursor-pointer z-10 ">
+                        <button className="hover:cursor-pointer">
+                            Ver más
+                        </button>
 
-            <div className="relative grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-5 max-w-4xl mx-auto z-20 ">
-                {servicios.map((s) => {
-                    const isOpen = openId === s.id;
+                    </div>
+                </div>
 
-                    // si está abierta muestra todo, sino solo 3
-                    const visibleTags = isOpen ? s.tag : s.tag.slice(0, 3);
+            </div>
+            <div className="w-1/2">
+                <div className="relative flex flex-col gap-3 max-w-4xl mx-auto z-20 ">
+                    {servicios.map((s) => {
 
-                    return (
-                        <div
-                            key={s.id}
-                            className="border border-[#e8d8c8] bg-white overflow-hidden rounded-lg flex flex-col  text-start "
-                        >
-                            <img
-                                src={s.image}
-                                alt={s.title}
-                                className="w-full h-40 object-cover"
-                            />
 
-                            <div className="p-4 flex flex-col gap-2">
-                                <h3 className="text-lg text-[#3a3028]">{s.title}</h3>
+                        return (
+                            <div
+                                key={s.id}
+                                className="overflow-hidden  flex flex-col text-start gap-1 "
+                            >
+                                <div className="flex items-center">
+                                    <img
+                                        src={s.image}
+                                        alt={s.title}
+                                        className=" h-18 w-18 object-cover rounded-md"
+                                    />
 
-                                <p className="text-xs text-[#a0907e] mb-3">
-                                    {s.description}
-                                </p>
-                                <div
-                                    className={`flex w-full overflow-hidden items-center transition-all duration-700 ease-in-out ${isOpen ? "max-h-40 opacity-100 mt-0" : "max-h-16 opacity-80"
-                                        }`}
-                                >
-                                    <div className="flex flex-wrap gap-2 mb-4 ">
-                                        {visibleTags.map((tag) => (
-                                            <span
-                                                key={tag}
-                                                className="text-[10px] uppercase bg-[#f7f0e8] px-2 py-1 rounded-full"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
+
+                                    <div className="p-3 flex flex-col gap-0">
+                                        <h3 className="text-sm text-olive-700  font-title">{s.title}</h3>
+
+                                        <p className="text-xs text-[#a0907e] ">
+                                            {s.description}
+                                        </p>
                                     </div>
 
                                 </div>
+                                <hr className="mt-2 border-t border-red-100" />
 
-                                {s.tag.length > 3 && (
-                                    <button
-                                        onClick={() => toggleCard(s.id)}
-                                        className="text-xs uppercase text-[#b8967a]"
-                                    >
-                                        {isOpen
-                                            ? "Ver menos"
-                                            : `Ver más +${s.tag.length - 3}`}
-                                    </button>
-                                )}
+
+
                             </div>
-                        </div>
-                    );
-                })}
+
+                        );
+                    })}
+                </div>
+
             </div>
+
         </section>
     );
 };
